@@ -1,0 +1,9 @@
+.boxes{
+    display: flex;
+    margin-left: 16%;
+   
+}
+.done{
+    margin-right: 56%;
+    display: inline;
+}
