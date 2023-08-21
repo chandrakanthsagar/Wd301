@@ -3,36 +3,36 @@ import "./TaskCard.css";
 interface dueDate{
   title :string,
   dueDate:string,
-  assigneeName:string
+  assignee:string
 }
 interface completed{
   title :string,
   completedAtDate:string,
-  assigneeName:string
+  assignee:string
 }
 
 function App() {
   let due1:dueDate={
     title:"Build website with static content",
     dueDate:"10th April",
-    assigneeName:"Rohit S"
+    assignee:"Rohit S"
   }
   let due2:dueDate={
     title:"Add Blog",
     dueDate:"22nd March",
-    assigneeName:"Rohit M"
+    assignee:"Rohit M"
     
   }
   let done1:completed={
     title:"Design the mockup",
     completedAtDate:"10th April",
-    assigneeName:"Rohit M"
+    assignee:"Rohit M"
 
   }
   let done2:completed={
     title:"Get Approval from principal",
     completedAtDate:"20th April",
-    assigneeName:"Ajay S"
+    assignee:"Ajay S"
     
 
   }
