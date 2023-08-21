@@ -18,7 +18,7 @@ const TaskCard = (props) =>{
            return (
                <>
                <h2> {props.title}</h2>
-               <p>Completed on:{props.completedAtDate}</p>
+               <p>Completed on:{" "+props.completedAtDate}</p>
                <p>Assignee:{" "+props.assigneeName}</p>
                
            </>
