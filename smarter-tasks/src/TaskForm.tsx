@@ -23,13 +23,15 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
 
   addTask: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    const newTask = {
-      title: this.state.title,
-      dueDate: this.state.dueDate,
-      description: this.state.description,
-    };
-    this.props.addTask(newTask);
-    this.setState({ title: "", dueDate: "", description: "" });
+    if (this.state.title.trim() !== "" && this.state.dueDate.trim() !== "") {
+      const newTask = {
+        title: this.state.title,
+        dueDate: this.state.dueDate,
+        description: this.state.description,
+      };
+      this.props.addTask(newTask);
+      this.setState({ title: "", dueDate: "", description: "" });
+    }
   };
 
   handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -41,7 +43,7 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
     return (
       <form onSubmit={this.addTask}>
         <input
-        required
+          required
           type="text"
           id="todoTitle"
           name="title"
@@ -52,7 +54,7 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
         />
         <br />
         <input
-        required
+          required
           type="text"
           id="todoDueDate"
           name="dueDate"
