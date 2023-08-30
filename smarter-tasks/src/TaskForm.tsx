@@ -23,15 +23,13 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
 
   addTask: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    if (this.state.title.trim() !== "" && this.state.dueDate.trim() !== "") {
-      const newTask = {
-        title: this.state.title,
-        dueDate: this.state.dueDate,
-        description: this.state.description,
-      };
-      this.props.addTask(newTask);
-      this.setState({ title: "", dueDate: "", description: "" });
-    }
+    const newTask = {
+      title: this.state.title,
+      dueDate: this.state.dueDate,
+      description: this.state.description,
+    };
+    this.props.addTask(newTask);
+    this.setState({ title: "", dueDate: "", description: "" });
   };
 
   handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -40,12 +38,10 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
   };
 
   render() {
-    const { title, dueDate } = this.state;
-    const isAddButtonDisabled = title.trim() === "" || dueDate.trim() === "";
-
     return (
       <form onSubmit={this.addTask}>
         <input
+        required
           type="text"
           id="todoTitle"
           name="title"
@@ -56,6 +52,7 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
         />
         <br />
         <input
+        required
           type="text"
           id="todoDueDate"
           name="dueDate"
@@ -75,16 +72,7 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
           placeholder="Description"
         />
         <br />
-        <button
-          type="submit"
-          id="addTaskButton"
-          disabled={isAddButtonDisabled}
-        >
-          Add item
-        </button>
-        {isAddButtonDisabled && (
-          <p className="text-red-500 mt-2">Please enter both title and due date.</p>
-        )}
+        <button type="submit" id="addTaskButton">Add item</button>
       </form>
     );
   }
