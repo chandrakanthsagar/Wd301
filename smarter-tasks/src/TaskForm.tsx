@@ -23,7 +23,7 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
 
   addTask: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    if (this.state.title && this.state.dueDate) {
+    if (this.state.title.trim() !== "" && this.state.dueDate.trim() !== "") {
       const newTask = {
         title: this.state.title,
         dueDate: this.state.dueDate,
@@ -41,7 +41,7 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
 
   render() {
     const { title, dueDate } = this.state;
-    const isAddButtonDisabled = !title || !dueDate;
+    const isAddButtonDisabled = title.trim() === "" || dueDate.trim() === "";
 
     return (
       <form onSubmit={this.addTask}>
@@ -82,6 +82,9 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
         >
           Add item
         </button>
+        {isAddButtonDisabled && (
+          <p className="text-red-500 mt-2">Please enter both title and due date.</p>
+        )}
       </form>
     );
   }
